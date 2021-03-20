@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
+
+Route::resource('usuario', 'UserController');
+
+Route::post('usuario/update', 'UserController@update')->name('usuario.update');
+
+Route::get('usuario/destroy/{id}', 'UserController@destroy');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
